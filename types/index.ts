@@ -30,4 +30,40 @@ type CarProps = {
     year: number
 }
 
-export type { CustomButtonProps, SearchManufacturerProps, CarProps }
+type FilterProps = {
+    manufacturer: string
+    year: number
+    fuel: string
+    limit: number
+    model: string
+}
+
+type OptionProps = {
+    title: string
+    value: string
+}
+
+type CustomFilterProps = {
+    title: string
+    options: OptionProps[]
+}
+
+type ShowMoreProps = {
+    pageNumber: number
+    isNext: boolean
+}
+
+type SearchParameters = {
+    searchParams: FilterProps
+}
+
+export type {
+    CustomButtonProps,
+    SearchManufacturerProps,
+    CarProps,
+    FilterProps,
+    OptionProps,
+    CustomFilterProps,
+    ShowMoreProps,
+    SearchParameters,
+}
