@@ -23,15 +23,15 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
 
         router.push(newPathname, { scroll: false })
     }
+
+    const selectHandleFilter = (e: OptionProps) => {
+        setSelected(e)
+        handleUpdateParams(e)
+    }
+
     return (
         <div className="w-fit">
-            <Listbox
-                value={selected}
-                onChange={(e) => {
-                    setSelected(e)
-                    handleUpdateParams(e)
-                }}
-            >
+            <Listbox value={selected} onChange={selectHandleFilter}>
                 <div className="relative w-fit z-10">
                     <ListboxButton className="custom-filter__btn">
                         <span className="block truncate">{selected.title}</span>
@@ -40,7 +40,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
                             width={20}
                             height={20}
                             className="ml-4 object-contain"
-                            alt="chevron up down"
+                            alt="chevron_up-down"
                         />
                     </ListboxButton>
                     <Transition
@@ -49,36 +49,31 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <ListboxOptions className="custom-filter__options">
-                            {options.map((option) => {
-                                return (
-                                    <ListboxOption
-                                        key={option.title}
-                                        value={option}
-                                        className={({ focus }) =>
-                                            `relative cursor-default select-none py-2 px-4 ${
-                                                focus
-                                                    ? "bg-primary-blue text-white"
-                                                    : "text-gray-900"
-                                            }`
-                                        }
-                                    >
-                                        {({ selected }) => {
-                                            return (
-                                                <span
-                                                    className={`block truncate ${
-                                                        selected
-                                                            ? "font-medium"
-                                                            : "font-normal"
-                                                    }`}
-                                                >
-                                                    {option.title}
-                                                </span>
-                                            )
-                                        }}
-                                    </ListboxOption>
-                                )
-                            })}
+                        <ListboxOptions
+                            className="custom-filter__options"
+                            anchor="bottom"
+                        >
+                            {options.map((option) => (
+                                <ListboxOption
+                                    key={option.title}
+                                    className="data-[focus]:bg-primary-blue data-[focus]:text-white"
+                                    value={option}
+                                >
+                                    {({ selected }) => (
+                                        <>
+                                            <span
+                                                className={`block truncate ${
+                                                    selected
+                                                        ? "font-medium"
+                                                        : "font-normal"
+                                                }`}
+                                            >
+                                                {option.title}
+                                            </span>
+                                        </>
+                                    )}
+                                </ListboxOption>
+                            ))}
                         </ListboxOptions>
                     </Transition>
                 </div>

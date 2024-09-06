@@ -1,5 +1,5 @@
 "use client"
-import { use, useState } from "react"
+import { useState } from "react"
 import { SearchManufacturer } from "."
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -11,6 +11,7 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
             alt="magnifying glass"
             width={40}
             height={40}
+            className="object-contain"
         />
     </button>
 )
@@ -85,3 +86,6 @@ const SearchBar = () => {
 }
 
 export default SearchBar
+
+
+

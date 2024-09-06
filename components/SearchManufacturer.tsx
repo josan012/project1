@@ -69,15 +69,15 @@ const SearchManufacturer = ({
                                 filteredManufacturers.map((item) => (
                                     <ComboboxOption
                                         key={item}
-                                        className={({ active }) => `
+                                        className={({ focus }) => `
                                 relative search-manufacturer__option ${
-                                    active
+                                    focus
                                         ? "bg-primary-blue text-white"
                                         : "text-gray-900"
                                 }`}
                                         value={item}
                                     >
-                                        {({ selected, active }) => (
+                                        {({ selected, focus }) => (
                                             <>
                                                 <span
                                                     className={`block truncate ${
@@ -91,7 +91,7 @@ const SearchManufacturer = ({
                                                 {selected ? (
                                                     <span
                                                         className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                                            active
+                                                            focus
                                                                 ? "text-white"
                                                                 : "text-teal-600"
                                                         }`}
